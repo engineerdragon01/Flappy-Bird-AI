@@ -98,6 +98,17 @@ class Pipe:
     def set_height(self):
         self.height = random.randrange(40, 450)
         self.top = self.height - self.PIPE_TOP.get_height()
+        self.bottom = self.height + self.GAP
+
+    def move(self):
+        self.x -= self.VEL
+
+    def draw(self, win):
+        win.blit(self.PIPE_TOP, (self.x, self.top))
+        win.blit(self.PIPE_BOTTOM, (self.x, self.bottom))
+
+    def collide(self, bird):
+        
 
 def draw_window(win, bird):
     win.blit(BG_IMG, (0, 0))
